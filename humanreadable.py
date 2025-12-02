@@ -1,3 +1,7 @@
+## MISS-CODE
+## IS NOT WORKING
+
+
 a = 62 # "1 minute and 2 seconds")
 b = 120 # "2 minutes")
 c = 3662 # "1 hour, 1 minute and 2 seconds")
