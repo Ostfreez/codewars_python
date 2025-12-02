@@ -1,6 +1,5 @@
 a = "The sunset sets at twelve o clock"
 
-
 def alphabet_position(text):
     alphabet_to_number = {
     'a': '1', 'A': '1', 'b': '2', 'B': '2', 'c': '3', 'C': '3', 'd': '4', 'D': '4',
