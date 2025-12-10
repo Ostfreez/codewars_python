@@ -1,86 +1,105 @@
+'''
+It took me a long time to figure out that the dictionary WORDS is provided…
+'''
+
+
+
 a = (
             ('GQEMAUVXY', ['GAME', 'PAUSE']),
-            ('TDWAYZROE', ['TRODAY', 'TOWER', 'TRADE', 'WATER']),
+            ('TDWAYZROE', ['TODAY', 'TOWER', 'TRADE', 'WATER']),
             ('EAEEAYITB', ['BEAT', 'BITE', 'BYTE']),
             ('AKUIYOOLO', ['LOOK', 'YOLK']),
             ('GVDTCAESU', ['CAGES', 'CAUSE', 'CAVES', 'DATES', 'GATES', 'GUEST', 'STAGE', 'USAGE'])
         )
 print("Salat: ___________________")
-print("a[0][0]: " + str(a[0][0]))           # TDWAYZROE
-print("a[1][0]: " + str(a[1][0]))           # TDWAYZROE
-print("a[2][0]: " + str(a[2][0]))           # TDWAYZROE
-print("a[3][0]: " + str(a[3][0]))           # TDWAYZROE
-print("a[4][0]: " + str(a[4][0]))           # TDWAYZROE
+print("a[0][0]: " + str(a[0][0]))           
+print("a[1][0]: " + str(a[1][0]))           
+print("a[2][0]: " + str(a[2][0]))           
+print("a[3][0]: " + str(a[3][0]))           
+print("a[4][0]: " + str(a[4][0]))           
 print("liste_____________________")
-print("[a][0][1]: " + str(a[0][1]))         # ['TRODAY', 'TOWER', 'TRADE', 'WATER']
-print("[a][1][1]: " + str(a[1][1]))         # ['TRODAY', 'TOWER', 'TRADE', 'WATER']
-print("[a][2][1]: " + str(a[2][1]))         # ['TRODAY', 'TOWER', 'TRADE', 'WATER']
-print("[a][3][1]: " + str(a[3][1]))         # ['TRODAY', 'TOWER', 'TRADE', 'WATER']
-print("[a][4][1]: " + str(a[4][1]))         # ['TRODAY', 'TOWER', 'TRADE', 'WATER']
+print("[a][0][1]: " + str(a[0][1]))         
+print("[a][1][1]: " + str(a[1][1]))         
+print("[a][2][1]: " + str(a[2][1]))         
+print("[a][3][1]: " + str(a[3][1]))         
+print("[a][4][1]: " + str(a[4][1]))         
 print("wort_____________________")
-print("[a][0][1][0]: " + str(a[0][1][0]))   # GAME
-print("[a][0][1][1]: " + str(a[0][1][1]))   # GAME
-print("[a][1][1][0]: " + str(a[1][1][0]))   # GAME
+print("[a][0][1][0]: " + str(a[0][1][0]))   
+print("[a][0][1][1]: " + str(a[0][1][1]))   
+print("[a][1][1][0]: " + str(a[1][1][0]))   
 
 print("len(a): " + str(len(a)))          
-print("[a][0]: " + str(a[0]))               # ('GQEMAUVXY', ['GAME', 'PAUSE'])
-print("[a][1]: " + str(a[1]))               # ('TDWAYZROE', ['TRODAY', 'TOWER', 'TRADE', 'WATER'])
+print("[a][0]: " + str(a[0]))               
+print("[a][1]: " + str(a[1]))             
 
 def longest_word(letters):
     # test tupel
     gesamt = letters
     erstes_ergebnis = []
+    ergebnis = ()
     
     # funktion ob wort in salat
-    def vergleich(salat,wort):      #salat test_a[0] (a0: ('GQEMAUVXY', ['GAME']))     wort test_a[1][0] (TDWAYZROE)
+    def vergleich(salat,wort):     
         zw_ergebnis = ""
         for zeichen in wort:
             if zeichen in salat:
                 zw_ergebnis += zeichen
         return zw_ergebnis
     i = 0
-    k = 0
     l = 0
-    print("len: " + str(len(gesamt[i][1])))
-            
-            #Hier muss noch eine FOR schleife über die While um denn ersten a[HIER] [fest] Variabel
-            #Gucke dir die Printausgaben und positionen
-            
-                                # salat                         wort
-    while k < len(gesamt):
-        while l < (len(gesamt[i][1])):
+    k=0
+    #print("len: " + str(len(gesamt[i][1])))
+    #print(type(len(gesamt)))        
+           
+    while i < len(gesamt): # wenn ich hier die +1, dann bin ich bei while l < (len(gesamt[i][1])): out of range [i]
+                                # wenn ich ohne +1, dann nimmt er die letzte von a nicht a[4][1] ([a][4][1]: ['CAGES', 'CAUSE', 'CAVES', 'DATES', 'GATES', 'GUEST', 'STAGE', 'USAGE'])
+        while l < len(gesamt[i][1]):
+            #print(vergleich(gesamt[i][0], gesamt[i][1][l]))
             zwischen = vergleich(gesamt[i][0], gesamt[i][1][l])
-                
+                    
             if zwischen == gesamt[i][1][l]:
-                print("zwischen " + zwischen)
-                erstes_ergebnis.append(zwischen)
+                    erstes_ergebnis.append(zwischen)
             l += 1
-            
+        
+        l = 0    
         i += 1
-        k += 1
+        #print(i)
+        ergebnis += erstes_ergebnis,
+        erstes_ergebnis = []
+        #print(ergebnis)
     erstes_ergebnis.sort()
-    return erstes_ergebnis
-
+    return ergebnis
+print(" ")
+print(" ")
 print("RETURN: " + str(longest_word(a)))
 
 '''
-Salat: ___________________
-a[0][0]: GQEMAUVXY
-a[1][0]: TDWAYZROE
-a[2][0]: EAEEAYITB
-a[3][0]: AKUIYOOLO
-a[4][0]: GVDTCAESU
-liste_____________________
-[a][0][1]: ['GAME', 'PAUSE']
-[a][1][1]: ['TRODAY', 'TOWER', 'TRADE', 'WATER']
-[a][2][1]: ['BEAT', 'BITE', 'BYTE']
-[a][3][1]: ['LOOK', 'YOLK']
-[a][4][1]: ['CAGES', 'CAUSE', 'CAVES', 'DATES', 'GATES', 'GUEST', 'STAGE', 'USAGE']
-wort_____________________
-[a][0][1][0]: GAME
-[a][0][1][1]: PAUSE
-[a][0][1][0]: TRODAY
-len(a): 5
-[a][0]: ('GQEMAUVXY', ['GAME', 'PAUSE'])
-[a][1]: ('TDWAYZROE', ['TRODAY', 'TOWER', 'TRADE', 'WATER'])
+def longest_word(letters):
+    if not letters:
+        return None
+    
+    ergebnis = []
+    lang = 0
+
+    for wort in words:
+        
+        temp = list(letters)
+        valid = True
+        for c in wort:
+            if c in temp:
+                temp.remove(c)
+            else:
+                valid = False
+                break
+
+        if valid:
+            if len(wort) > lang:
+                lang = len(wort)
+                ergebnis = [wort]
+            elif len(wort) == lang:
+                ergebnis.append(wort)
+
+
+
+    return ergebnis if ergebnis else None
 '''
